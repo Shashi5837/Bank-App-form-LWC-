@@ -1,0 +1,30 @@
+
+.container {
+  
+  background-color:#e3e7ed;  
+    height:1460px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    padding-left: 180px;
+    padding-right:230px;
+    
+  }
+  .radio-combo-inline .slds-form-element__control .slds-radio
+{
+    display: inline;
+}
+
+.button {
+  padding:15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.button1 {
+  padding:15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+}
+
