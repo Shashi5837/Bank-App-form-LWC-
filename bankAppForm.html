@@ -1,0 +1,236 @@
+<template>
+    <div class="container">
+        <div class="slds-card" style="height:600px; width:700px">
+
+   <lightning-card >
+<form>
+    <h1 style="font-size:30px; padding-left:100px;font-family:'Lato', sans-serif;font-weight:bold">BANK APPLICATION FORM</h1>
+    
+        <div class="frame" style="width:600px" ><br/>
+            <div style="margin-left:3%;" >
+                <div   class="new" style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+        <lightning-input label="First Name" onchange={handleChanges}   class="slds-text-title_bold first"
+        placeholder="Please Enter First Name" required="true"  name="First Name" 
+        >
+        
+    </lightning-input>
+ 
+            </div>
+            </div>
+        <br/>
+     
+
+        <div style="margin-left:3%;">
+            <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+        <lightning-input label="Last Name" onchange={handleLast} required="true"
+        placeholder="Please Enter last Name"  class="slds-text-title_bold"></lightning-input> <br/>
+        
+        </div>
+        </div>
+     
+            <div style="margin-left:3%;" >
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+                <!--Lightning-radio-group label="Gender" 
+                                        name="radioButtonGroup" 
+                                        onchange={handleGen} 
+                                        options={options}
+                                        value={gender}
+                                        type="radio"
+                                        required="true"
+                                        class="radio-combo-inline">
+                                    </lightning-radio-group-->
+            </div>
+            </div>
+            <br/>
+
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+            <lightning-combobox class="slds-text-title_bold third" style="width: 355px; padding: 0px;font-family: 'Lato', sans-serif; font-size: 13px; " 
+            name="Bank account type"
+            label="Bank Account Type"
+            placeholder="--Please Select--"
+            value={baType}
+            onchange={handleBank}
+            options={options1}
+            required="true"
+            variant="label-inline">
+        </lightning-combobox>
+            </div>
+            </div>
+            <br/>
+                
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+                <!--lightning-radio-group label="Account" 
+                                        name="AccountTypes" 
+                                        onchange={handleAcc} 
+                                        options={options2}
+                                        value={acc}
+                                        checked
+                                        type="radio"
+                                        required></lightning-radio-group-->
+            
+              
+                </div>
+            </div>  <br/>
+            
+            <div style="margin-left:3%;">
+                <div style="padding-left:15px;width:430px;color:black;font-family:Serif Fonts;font-size:20px;">
+
+            <lightning-checkbox-group name="Checkbox Group"
+                              label="Cards"
+                              options={option1}
+                              value={card}
+                              onchange={handleCard}
+                              required></lightning-checkbox-group>
+                </div>
+            </div> <br/>
+
+           
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+            <lightning-input label="Address" onchange={handleAddress} 
+            placeholder="Enter your address"  class="slds-text-title_bold"></lightning-input>
+                </div>
+
+            </div><br/>
+           
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+        <lightning-combobox class="slds-text-title_bold" style="width: 355px; padding: 0px;font-family: 'Lato', sans-serif; font-size: 13px; " 
+            name="States"
+            label="State"
+            placeholder="--Please Select--"
+            value={stat}
+            options={controllingValues}
+            onchange={handleState}
+            required="true"
+            variant="label-inline">
+        </lightning-combobox>
+                </div>
+            </div><br/>
+
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+                    <template if:true={dstat}>
+                    
+        <lightning-combobox class="slds-text-title_bold" style="width: 355px; padding: 0px;font-family: 'Lato', sans-serif; font-size: 13px; " 
+        name="Cities"
+        label="City"
+        placeholder="--Please Select--"
+        value={cit}
+        options={dependentValues}
+        onchange={handleCity}
+        required="true"
+        disabled
+        variant="label-inline">
+    </lightning-combobox>
+</template>
+
+<template if:false={dstat}>
+                    
+    <lightning-combobox class="slds-text-title_bold" style="width: 355px; padding: 0px;font-family: 'Lato', sans-serif; font-size: 13px; " 
+    name="Cities"
+    label="City"
+    placeholder="--Please Select--"
+    value={cit}
+    options={dependentValues}
+    onchange={handleCity}
+    required="true"
+    variant="label-inline">
+</lightning-combobox>
+</template>
+
+    
+                </div>
+            </div><br/>
+
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+            <lightning-input label="Zip Code" 
+                             onchange={handleZip}
+                             
+                             required="true"
+                             placeholder="Please Enter Zip code" 
+                             maxlength="6"
+                             minlength="4"
+                             type="text"
+                             class="slds-text-title_bold"></lightning-input>
+            </div>
+            </div>
+            <br/>
+
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+             <lightning-input label="Mobile Number" onchange={handleMobile} required="true" maxlength="10" type="text"
+             placeholder="Please Enter Mobile Number"  class="slds-text-title_bold second"></lightning-input>
+                </div>
+            </div><br/>
+
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+             <lightning-input label="Alternate Mobile Number" onchange={handleAltMob} maxlength="10" type="text"
+             placeholder="Please Enter Alternate Mobile Number"  class="slds-text-title_bold"></lightning-input>
+                </div>
+            </div><br/>
+
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+             <lightning-input label="Email Id" onchange={handleEmail}  required="true"
+             placeholder="Please Enter Email"  class="slds-text-title_bold"></lightning-input>
+                </div>
+            </div><br/>
+
+            <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+             <lightning-input label="Nominee Details" onchange={handleNominee}
+             placeholder="Please Enter Nominee"  class="slds-text-title_bold"></lightning-input>
+                </div>
+            </div><br/>
+
+             <div style="margin-left:3%;">
+                <div  style="width: 355px;width:430px; padding-left:15px;font-family: 'Lato', sans-serif; font-size: 13px;">
+
+                <!--lightning-radio-group label="Cheque Book" 
+                                        name="cheque book" 
+                                        onchange={handlecheck} 
+                                        options={options6}
+                                        value={cbook}
+                                        type="radio"
+                                        required="true"
+                                        ></lightning-radio-group-->
+                </div>
+            
+     
+            </div>           <br/>
+<div  class=" slds-align_absolute-center">
+            <lightning-button class="button1" label="Reset" variant="destructive" 
+            onclick={CheckMethod}></lightning-button>
+           
+       
+
+            <lightning-button class="button" label="Submit" variant="brand" 
+            onclick={createRecords}></lightning-button>
+</div>
+            
+         
+        </div>
+   </form>
+</lightning-card>
+
+
+        </div>
+    </div>
+</template>
